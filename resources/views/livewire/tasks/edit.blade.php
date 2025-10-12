@@ -16,12 +16,12 @@ rules([
 $update = function () {
     $this->validate(); // バリデーションチェック
     $this->task->update($this->all());
-    return redirect()->route('todo_app.show', $this->task);
+    return redirect()->route('tasks.show', $this->task);
 };
 ?>
 
 <div>
-    <a href="{{ route('todo_app.show', $task) }}">戻る</a>
+    <a href="{{ route('tasks.show', $task) }}">戻る</a>
     <h1>更新</h1>
 
     <!-- wire:submit="update"でフォーム送信時にupdate関数を呼び出し -->

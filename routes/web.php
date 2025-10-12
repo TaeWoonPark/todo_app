@@ -9,9 +9,8 @@ Route::get('/', function () {
 });
 
 // 一覧ページ
-Volt::route('/todo_app', 'todo_app.index')->name('todo_app.index');
-Volt::route('/todo_app/create', 'todo_app.create')->name('todo_app.create');
+Volt::route('/tasks', 'tasks.index')->name('tasks.index');
+Volt::route('/tasks/create', 'tasks.create')->name('tasks.create');
 // 詳細ページ
-Volt::route('/todo_app/{task}', 'todo_app.show')->name('todo_app.show');
-Volt::route('/todo_app/{task}/edit', 'todo_app.edit')->name('todo_app.edit');
-
+Volt::route('/tasks/{task}', 'tasks.show')->name('tasks.show');
+Volt::route('/tasks/{task}/edit', 'tasks.edit')->name('tasks.edit');

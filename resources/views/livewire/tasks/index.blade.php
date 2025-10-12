@@ -5,7 +5,7 @@ use App\Models\Task;
 //
 state(['Task' => fn() => Task::all()]);
 $create = function () {
-    return redirect()->route('todo_app.create');
+    return redirect()->route('tasks.create');
 };
 ?>
 
@@ -14,7 +14,7 @@ $create = function () {
     <ul>
         @foreach ($Task as $task)
             <li>
-                <a href="{{ route('todo_app.show', $task) }}">
+                <a href="{{ route('tasks.show', $task) }}">
                     {{ $task->title }}
                 </a>
             </li>

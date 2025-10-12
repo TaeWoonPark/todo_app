@@ -14,12 +14,12 @@ $store = function () {
     $this->validate(); // バリデーションチェック
     Task::create($this->all());
 
-    return redirect()->route('todo_app.index');
+    return redirect()->route('tasks.index');
 };
 ?>
 
 <div>
-    <a href="{{ route('todo_app.index') }}">戻る</a>
+    <a href="{{ route('tasks.index') }}">戻る</a>
     <h1>新規登録</h1>
     <!-- wire:submit="store"でフォーム送信時にstore関数を呼び出し -->
     <form wire:submit="store">
