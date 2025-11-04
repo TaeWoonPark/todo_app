@@ -3,11 +3,12 @@
 use function Livewire\Volt\{state, rules};
 use App\Models\Task;
 //
-state(['title', 'description']);
+state(['title', 'description', 'status' => 1]);
 
 rules([
     'title' => 'required|string|max:50',
     'description' => 'required|string|max:2000',
+    'status' => 'required|integer|min:1|max:3',
 ]);
 
 $store = function () {
@@ -40,6 +41,18 @@ $store = function () {
             <br>
             <!-- wire:model="description"で入力値とコンポーネントの状態($this->description)を自動的に同期 -->
             <textarea wire:model="description" id="description"></textarea>
+        </p>
+        <p>
+            <label for="status">優先度</label>
+            @error('status')
+                <span class="error">({{ $message }})</span>
+            @enderror
+            <br>
+            <select wire:model="status" id="status">
+                <option value="1">未着手</option>
+                <option value="2">進行中</option>
+                <option value="3">完了</option>
+            </select>
         </p>
         <button type="submit">登録</button>
     </form>
