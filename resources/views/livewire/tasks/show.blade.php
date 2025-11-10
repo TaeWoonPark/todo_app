@@ -13,8 +13,6 @@ $destroy = function () {
     $this->task->delete();
     return redirect()->route('tasks.index');
 };
-
-
 ?>
 
 <div>
