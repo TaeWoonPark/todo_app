@@ -42,6 +42,14 @@ $destroy = function () {
             {{ match ($task->status ?? 0) {1 => '未着手',2 => '進行中',3 => '完了',default => '不明'} }}
         </span>
     </p>
+    <p>
+        期限:
+        @if ($task->due_date)
+            {{ $task->due_date->format('Y年m月d日') }}
+        @else
+            未設定
+        @endif
+    </p>
 
     <button wire:click="edit">編集する</button>
     <button wire:click="destroy" wire:confirm="本当に削除しますか？">削除する</button>
