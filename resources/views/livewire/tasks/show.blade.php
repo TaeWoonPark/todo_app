@@ -14,15 +14,6 @@ $destroy = function () {
     return redirect()->route('tasks.index');
 };
 
-// 優先度を文字列に変換する関数
-//$getStatusText = function ($status) {
-//return match ($status) {
-//1 => '未着手',
-//2 => '進行中',
-//3 => '完了',
-//default => '不明',
-//};
-//};
 
 ?>
 
