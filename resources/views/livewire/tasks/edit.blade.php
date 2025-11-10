@@ -17,15 +17,18 @@ rules([
 ]);
 $update = function () {
     $this->validate(); // バリデーションチェック
-    $this->task->update($this->all());
+    $this->task->update([
+        'title' => $this->title,
+        'description' => $this->description,
+        'status' => $this->status,
+    ]);
     return redirect()->route('tasks.show', $this->task);
 };
 ?>
 
 <div>
     <a href="{{ route('tasks.show', $task) }}">戻る</a>
-    {{$task->title}}
-    <h1>更新</h1>
+    <h1>タスク更新</h1>
 
     <!-- wire:submit="update"でフォーム送信時にupdate関数を呼び出し -->
     <form wire:submit="update">
@@ -48,15 +51,15 @@ $update = function () {
             <textarea wire:model="description" id="description"></textarea>
         </p>
         <p>
-            <label for="priority">優先度</label>
+            <label for="status">優先度</label>
             @error('status')
                 <span class="error">({{ $message }})</span>
             @enderror
             <br>
             <select wire:model="status" id="status">
-                <option value="1">未着手</option>
-                <option value="2">進行中</option>
-                <option value="3">完了</option>
+                <option value="1" {{ $status == 1 ? 'selected' : '' }}>未着手</option>
+                <option value="2" {{ $status == 2 ? 'selected' : '' }}>進行中</option>
+                <option value="3" {{ $status == 3 ? 'selected' : '' }}>完了</option>
             </select>
         </p>
         <button type="submit">更新</button>

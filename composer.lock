@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e93ca8591ac2ca75f582aa749e617cb",
+    "content-hash": "c4525368fdbba7883514dabf1ee270cb",
     "packages": [
         {
             "name": "brick/math",
@@ -2087,21 +2087,21 @@
         },
         {
             "name": "livewire/volt",
-            "version": "v1.7.2",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/volt.git",
-                "reference": "91ba934e72bbd162442840862959ade24dbe728a"
+                "reference": "4b289eef2f15398987a923d9f813cad6a6a19ea4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/volt/zipball/91ba934e72bbd162442840862959ade24dbe728a",
-                "reference": "91ba934e72bbd162442840862959ade24dbe728a",
+                "url": "https://api.github.com/repos/livewire/volt/zipball/4b289eef2f15398987a923d9f813cad6a6a19ea4",
+                "reference": "4b289eef2f15398987a923d9f813cad6a6a19ea4",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^10.38.2|^11.0|^12.0",
-                "livewire/livewire": "^3.6.1",
+                "livewire/livewire": "^3.6.1|^4.0",
                 "php": "^8.1"
             },
             "require-dev": {
@@ -2155,7 +2155,7 @@
                 "issues": "https://github.com/livewire/volt/issues",
                 "source": "https://github.com/livewire/volt"
             },
-            "time": "2025-08-06T15:40:50+00:00"
+            "time": "2025-10-30T02:46:00+00:00"
         },
         {
             "name": "monolog/monolog",

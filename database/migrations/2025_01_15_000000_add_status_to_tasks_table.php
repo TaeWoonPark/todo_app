@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('momos', function (Blueprint $table) {
-            $table->integer('status')->default(1)->comment('優先度: 1=未着手, 2=進行中, 3=完了');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->integer('status')->default(1)->after('description')->comment('優先度: 1=未着手, 2=進行中, 3=完了');
         });
     }
 
@@ -21,8 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('memos', function (Blueprint $table) {
+        Schema::table('tasks', function (Blueprint $table) {
             $table->dropColumn('status');
         });
     }
 };
+
