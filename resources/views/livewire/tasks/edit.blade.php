@@ -3,17 +3,19 @@
 use function Livewire\Volt\{state, mount, rules};
 use App\Models\Task;
 
-state(['task', 'title', 'description', 'status']);
+state(['task', 'title', 'description', 'status', 'due_date']);
 mount(function (Task $task) {
     $this->task = $task;
     $this->title = $task->title;
     $this->description = $task->description;
     $this->status = $task->status;
+    $this->due_date = $task->due_date ? $task->due_date->format('Y-m-d') : null;
 });
 rules([
     'title' => 'required|string|max:50',
     'description' => 'required|string|max:2000',
     'status' => 'required|integer|min:1|max:3',
+    'due_date' => 'nullable|date',
 ]);
 $update = function () {
     $this->validate(); // バリデーションチェック
@@ -21,6 +23,7 @@ $update = function () {
         'title' => $this->title,
         'description' => $this->description,
         'status' => $this->status,
+        'due_date' => $this->due_date,
     ]);
     return redirect()->route('tasks.show', $this->task);
 };
@@ -61,6 +64,14 @@ $update = function () {
                 <option value="2" {{ $status == 2 ? 'selected' : '' }}>進行中</option>
                 <option value="3" {{ $status == 3 ? 'selected' : '' }}>完了</option>
             </select>
+        </p>
+        <p>
+            <label for="due_date">期限</label>
+            @error('due_date')
+                <span class="error">({{ $message }})</span>
+            @enderror
+            <br>
+            <input type="date" wire:model="due_date" id="due_date">
         </p>
         <button type="submit">更新</button>
     </form>

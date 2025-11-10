@@ -13,17 +13,6 @@ $destroy = function () {
     $this->task->delete();
     return redirect()->route('tasks.index');
 };
-
-// 優先度を文字列に変換する関数
-//$getStatusText = function ($status) {
-//return match ($status) {
-//1 => '未着手',
-//2 => '進行中',
-//3 => '完了',
-//default => '不明',
-//};
-//};
-
 ?>
 
 <div>
@@ -41,6 +30,14 @@ $destroy = function () {
         ">
             {{ match ($task->status ?? 0) {1 => '未着手',2 => '進行中',3 => '完了',default => '不明'} }}
         </span>
+    </p>
+    <p>
+        期限:
+        @if ($task->due_date)
+            {{ $task->due_date->format('Y年m月d日') }}
+        @else
+            未設定
+        @endif
     </p>
 
     <button wire:click="edit">編集する</button>

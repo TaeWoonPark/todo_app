@@ -34,6 +34,12 @@ $create = function () {
                 ">
                     [{{ match ($task->status ?? 0) {1 => '未着手',2 => '進行中',3 => '完了',default => '不明'} }}]
                 </span>
+                <!-- ステータスの横に期限を表示 -->
+                @if ($task->due_date)
+                    <span style="margin-left: 10px;">
+                        期限: {{ $task->due_date->format('Y年m月d日') }}
+                    </span>
+                @endif
             </li>
         @endforeach
     </ul>

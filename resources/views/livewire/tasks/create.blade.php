@@ -3,12 +3,13 @@
 use function Livewire\Volt\{state, rules};
 use App\Models\Task;
 //
-state(['title', 'description', 'status' => 1]);
+state(['title', 'description', 'status' => 1, 'due_date' => null]);
 
 rules([
     'title' => 'required|string|max:50',
     'description' => 'required|string|max:2000',
     'status' => 'required|integer|min:1|max:3',
+    'due_date' => 'nullable|date',
 ]);
 
 $store = function () {
@@ -53,6 +54,14 @@ $store = function () {
                 <option value="2">進行中</option>
                 <option value="3">完了</option>
             </select>
+        </p>
+        <p>
+            <label for="due_date">期限</label>
+            @error('due_date')
+                <span class="error">({{ $message }})</span>
+            @enderror
+            <br>
+            <input type="date" wire:model="due_date" id="due_date">
         </p>
         <button type="submit">登録</button>
     </form>
